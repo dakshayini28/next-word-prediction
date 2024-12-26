@@ -38,7 +38,7 @@ def main():
 
     seed_text = st.text_input("Enter your text:", value="")
     
-    next_words = st.number_input("Enter the number of words to predict:", min_value=1, max_value=100, value=1)
+    next_words = st.number_input("Enter the number of words to predict:", min_value=1, max_value=500, value=1)
     
     if st.button("Predict"):
         if not seed_text:
