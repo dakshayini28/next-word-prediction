@@ -33,7 +33,7 @@ def generate_text(seed_text, next_words):
         seed_text += " " + output_word
     return seed_text
 
-def main():
+def display_predictions():
     st.title("Next Word Prediction")
 
     seed_text = st.text_input("Enter your text:", value="")
@@ -45,8 +45,34 @@ def main():
             st.error("Please enter text.")
         else:
             result = generate_text(seed_text, next_words)
-            st.markdown(f"<h3 style='font-size:24px; color:black;'>Predicted Text: {result}</h3>", unsafe_allow_html=True)
+            st.markdown(f"<h3 style='font-size:20px; color:grey;'>Predicted Text: {result}</h3>", unsafe_allow_html=True)
 
+def display_instructions():
+    st.title("Instructions")
+    st.write("""
+    This app generates predicted text based on the seed input you provide. 
+    - Enter some starting text in the "Enter your text" box.
+    - Specify how many words you want to predict.
+    - Click "Predict" to see the generated text.
+    """)
+
+def display_about_us():
+    st.title("About Us")
+    st.write("""
+    This application was developed by a group of enthusiasts working on AI-powered text generation.
+    Our goal is to showcase how machine learning models can be used for creative writing and text generation.
+    """)
+
+def main():
+    # Sidebar for navigation
+    page = st.sidebar.selectbox("Select a page", ["Predictions", "Instructions", "About Us"])
+    
+    if page == "Predictions":
+        display_predictions()
+    elif page == "Instructions":
+        display_instructions()
+    elif page == "About Us":
+        display_about_us()
 
 if __name__ == "__main__":
     main()
